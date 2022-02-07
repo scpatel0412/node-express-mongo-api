@@ -1,0 +1,7 @@
+db.stars.insertOne(
+   { "star_name" : "Polaris",
+     "star_type" : "F3 main-sequence star yellow supergaint",
+     "distance" : " 323ly",
+     "text": "Polaris is a star in the northern circumpolar constellation of Ursa Minor. It is designated α Ursae Minoris (Latinized to Alpha Ursae Minoris) and is commonly called the North Star or Pole Star. With an apparent visual magnitude that fluctuates around 1.98, t is the brightest star in the constellation and is readily visible to the naked eye at night.[14] The position of the star lies less than a degree away from the north celestial pole, making it the current northern pole star. Historically, the stable position of the star in the northern sky has made it useful for navigation.The revised Hipparcos parallax gives a distance to Polaris of about 433 light-years (133 parsecs), while calculations by some other methods derive distances up to 35% closer."
+   }
+)

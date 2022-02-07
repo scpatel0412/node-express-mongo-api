@@ -17,7 +17,6 @@ const fileFilter = (req, file, cb) => {
 
 let upload = multer({
     storage: storage,
-
     fileFilter: fileFilter,
 });
 

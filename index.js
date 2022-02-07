@@ -18,7 +18,7 @@ mongoose.Promise =global.Promise;
 
 
 
-``
+
 // app.use(express.static('public'));
 app.use(morgan('dev'));
 app.use(cors());
@@ -29,7 +29,7 @@ app.use(
       extended: true
     })
 );
-app.get("/",(req, res) => res.send('welcome to server!'))
+app.get("/",(req, res) => res.send('welcome to server! All system operational'))
 app.use("/uploads",express.static('images'))
 app.use('/api',require('./routes'));
 // global.location.reload()

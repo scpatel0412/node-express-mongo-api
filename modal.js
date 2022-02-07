@@ -16,6 +16,10 @@ var starSchema = new mongoose.Schema({
     text:{
         type:String,
         require:true,
+    },
+    set_id:{
+        type:String,
+        require:true,
     }
 
 })
