@@ -30,6 +30,7 @@ app.use(
     })
 );
 app.get("/",(req, res) => res.send('welcome to server! All system operational'))
+app.use(express.static(__dirname + '/uploads'));
 app.use("/uploads",express.static('images'))
 app.use('/api',require('./routes'));
 // global.location.reload()

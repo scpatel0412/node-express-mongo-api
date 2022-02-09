@@ -24,18 +24,22 @@ router.get('/stars/:id', async(req,res) => {
         res.send('Error ' + err)
     }
 })
-router.post('/stars', async(req,res) => {
+router.post('/stars', uploadMulter, validation, async(req,res) => {
     // const{star_name,star_type,distance,text} = req.body
     //  const star = new stars({
     //    
     //  })
     //  res.json(star)
+    let name = req.body.name
+    let image = req.file.path
       const star = new stars({
          star_name:req.body.star_name,
          star_type:req.body.star_type,
          distance:req.body.distance,
          text:req.body.text,
-         set_id:req.body.set_id
+         set_id:req.body.set_id,
+         name:name,
+         image:image
     })
    
 
@@ -49,7 +53,7 @@ router.post('/stars', async(req,res) => {
 })
 
 
-router.put('/stars/:id', async(req,res) => {    
+router.put('/stars/:id',uploadMulter,validation,  async(req,res) => {    
     if(stars){
         // res.status(200).json(star)
         let star = await stars.findOneAndUpdate({_id:req.params.id},{
@@ -58,7 +62,9 @@ router.put('/stars/:id', async(req,res) => {
                 star_type:req.body.star_type,
                 distance:req.body.distance,
                 text:req.body.text,
-                set_id:req.body.set_id
+                set_id:req.body.set_id,
+                image:req.file.path,
+                name:req.body.name
             }
         },{new:true})
         res.send(star)
@@ -66,7 +72,7 @@ router.put('/stars/:id', async(req,res) => {
     }else{
         res.send('Error')
     }
-})
+} )
 router.delete('/stars/:id', async(req,res) => {    
     if(stars){
         // res.status(200).json(star)
@@ -78,23 +84,23 @@ router.delete('/stars/:id', async(req,res) => {
     }
 })
 
-router.post('/category', uploadMulter, validation, createCategory)
-router.get('/category', async(req,res) => {
-    try{
-           const star = await images1.find()
-           res.json(star)
-    }catch(err){
-        res.send('Error ' + err)
-    }
-}
-)
-router.get('/category/:id', async(req,res) => {
-    try{
-           const star = await images1.findById(req.params.id)
-           res.json(star)
-    }catch(err){
-        res.send('Error ' + err)
-    }
-})
+// router.post('/category', uploadMulter, validation, createCategory)
+// router.get('/category', async(req,res) => {
+//     try{
+//            const star = await images1.find()
+//            res.json(star)
+//     }catch(err){
+//         res.send('Error ' + err)
+//     }
+// }
+// )
+// router.get('/category/:id', async(req,res) => {
+//     try{
+//            const star = await images1.findById(req.params.id)
+//            res.json(star)
+//     }catch(err){
+//         res.send('Error ' + err)
+//     }
+// })
 
 module.exports = router

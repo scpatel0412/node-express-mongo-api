@@ -20,11 +20,8 @@ var starSchema = new mongoose.Schema({
     set_id:{
         type:String,
         require:true,
-    }
-
-})
-const categorySchema = new mongoose.Schema({
-    name: {
+    },
+     name: {
         type: String,
         trim: true,
         required: true
@@ -34,9 +31,31 @@ const categorySchema = new mongoose.Schema({
         trim: true,
         required: true
     }
-}, {
-    timestamps: true
+    
+
 })
+// const categorySchema = new mongoose.Schema({
+//     imageId:{
+//         type:String,
+//         required:true
+//     },
+//     imageDataId:{
+//          type:String,
+//         required:true
+//     },
+//     name: {
+//         type: String,
+//         trim: true,
+//         required: true
+//     },
+//     image: {
+//         type: String,
+//         trim: true,
+//         required: true
+//     }
+// }, {
+//     timestamps: true
+// })
 const stars = mongoose.model('stars',starSchema);
-const images1 = mongoose.model("images",categorySchema)
-module.exports = {stars,images1}
+// const images1 = mongoose.model("images",categorySchema)
+module.exports = {stars}

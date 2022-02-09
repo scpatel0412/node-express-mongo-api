@@ -6,6 +6,7 @@ module.exports = (req, res, next) => {
         })
     }
     console.log(req.body.name)
+ 
     let name = req.body.name
     let image = req.file.path
 
