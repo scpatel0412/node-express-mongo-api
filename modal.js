@@ -1,19 +1,16 @@
 const mongoose = require('mongoose');
 
 var starSchema = new mongoose.Schema({
-    star_name:{
+    title:{
         type:String,
         require:true,
     },
-    star_type:{
+    description:{
         type:String,
         require:true
     },
-    distance:{
-        type:String,
-        require:true
-    },
-    text:{
+   
+    type:{
         type:String,
         require:true,
     },
@@ -31,31 +28,98 @@ var starSchema = new mongoose.Schema({
         trim: true,
         required: true
     }
-    
-
+},{
+    timestamps: true
 })
-// const categorySchema = new mongoose.Schema({
-//     imageId:{
-//         type:String,
-//         required:true
-//     },
-//     imageDataId:{
-//          type:String,
-//         required:true
-//     },
-//     name: {
-//         type: String,
-//         trim: true,
-//         required: true
-//     },
-//     image: {
-//         type: String,
-//         trim: true,
-//         required: true
-//     }
-// }, {
-//     timestamps: true
-// })
+const user = new mongoose.Schema({
+    email: {
+        type: String,
+        
+        required: true
+    },
+    pass: {
+        type: String,
+        
+        required: true
+    },
+    isAdmin:{
+        type:String,
+        
+        required: true
+    }
+}, {
+    timestamps: true
+})
+const data1 = new mongoose.Schema({
+    star_name: {
+        type: String,
+        
+        required: true
+    },
+    description: {
+        type: String,
+        
+        required: true
+    },
+    setId:{
+        type:String,
+        
+        required: true
+    },    
+    image: {
+        type: String,
+        trim: true,
+        required: true
+    }
+}, {
+    timestamps: true
+}
+)
+const user2 = new mongoose.Schema({
+    email: {
+        type: String,
+        required: true
+    },
+    pass: {
+        type: String,
+        
+        required: true
+    }
+}, {
+    timestamps: true
+})
+const dailyfeeddata = new mongoose.Schema({
+    star_name: {
+        type: String,
+        
+        required: true
+    },
+    description: {
+        type: String,
+        
+        required: true
+    },
+    set_id:{
+        type:String,
+        
+        required: true
+    }, 
+    imageLink: {
+        type: String,
+        trim: true,
+        required: true
+    },
+    userEmail:{
+        type:String,
+        required:true
+    }
+}, {
+    timestamps: true
+}
+)
 const stars = mongoose.model('stars',starSchema);
-// const images1 = mongoose.model("images",categorySchema)
-module.exports = {stars}
+ const user1 = mongoose.model("users",user)
+ const bloguser = mongoose.model("blog-user",user2)
+ const blogdata = mongoose.model("blog",data1)
+ const dailyfeed = mongoose.model("dailyfeed",dailyfeeddata)
+module.exports = {user1,stars,blogdata,bloguser,dailyfeed}

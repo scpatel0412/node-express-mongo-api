@@ -1,20 +1,23 @@
 const express = require('express')
 const mongoose = require('mongoose');
 const app = express();
-const port = 8000;
+const port = process.env.PORT || 8000;
 const morgan = require('morgan');
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const path =require('path')
+const dotenv = require('dotenv')
+dotenv.config({path: './config.env'});
 
-
-mongoose.connect('mongodb://localhost:27017/test',() => ({
+const db = process.env.DATABASE
+mongoose.connect(db,() => ({
     useNewUrlParser:true,
-    useFindAndModify:false,
-    useCreateIndex:true,
-    useUnifiedTopology:true
-})).then(() => console.log('DB Connected'));
-mongoose.Promise =global.Promise;
+    useFindAndModify:false
+})).then(() => console.log('DB Connected'))
+.catch((err)=>{
+    console.log('connection failed');
+});;
+// mongoose.Promise =global.Promise;
 
 
 
