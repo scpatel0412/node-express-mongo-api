@@ -16,7 +16,7 @@ mongoose.connect(db,() => ({
 })).then(() => console.log('DB Connected'))
 .catch((err)=>{
     console.log('connection failed');
-});;
+});
 // mongoose.Promise =global.Promise;
 
 

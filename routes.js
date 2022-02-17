@@ -223,14 +223,9 @@ router.post('/dailyfeed',async(req,res) => {
 })
 router.put('/stars/:id',uploadMulter,validation,  async(req,res) => {    
     if(stars){
-        // res.status(200).json(star)
         let findImage = await stars.findById(req.params.id);
         if(findImage && findImage.image){ 
            fs.unlinkSync(findImage.image);
-       
-            //console.log("removed successfully", remove)
-      
-  
         }
         let star = await stars.findOneAndUpdate({_id:req.params.id},{
             $set:{
@@ -320,14 +315,10 @@ router.put('/blogdata/:id',async(req,res) => {
 router.delete('/stars/:id', async(req,res) => {    
     
     if(stars){
-        // res.status(200).json(star)
+    
         let findImage = await stars.findById(req.params.id);
         if(findImage && findImage.image){ 
            fs.unlinkSync(findImage.image);
-       
-            //console.log("removed successfully", remove)
-      
-  
         }
         let star = await stars.findByIdAndDelete({_id:req.params.id})
         
